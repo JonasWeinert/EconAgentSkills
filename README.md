@@ -6,9 +6,44 @@ Opinionated agent skills for econometrics research, built to make Claude Code, C
 
 A skill is a folder with a `SKILL.md` file (YAML frontmatter + markdown body) that an AI agent loads when it detects a relevant request. Skills follow the open [SKILL.md standard](https://agentskills.io/home) used by Anthropic Claude Code, Cursor, Codex, and Gemini CLI. The frontmatter includes a `description` that the agent uses to decide whether the skill is relevant to the current task; the body contains the operating procedure, decision trees, and links to deeper reference material and runnable examples.
 
+Concretely, this is the top of `_skills/analysis/r-econometrics/SKILL.md` — the agent reads the trigger-rich `description` to decide whether to load it:
+
+```yaml
+---
+name: r-econometrics
+description: >
+  Generates rigorous, modern, reproducible R code for causal inference and panel
+  econometrics with `fixest`, heterogeneity-robust DiD estimators (Callaway-Sant'Anna,
+  Sun-Abraham, BJS, de Chaisemartin-D'Haultfoeuille), weak-IV-robust inference,
+  optimal-bandwidth RDD via `rdrobust`, and wild cluster bootstrap.
+  Use when the user asks for IV, DiD, event studies, RDD, TWFE, staggered treatment,
+  clustered or wild-bootstrap inference, instrumental variables, parallel trends,
+  first-stage F, AR confidence sets, or publication-ready R regression output.
+workflow_stage: analysis
+tags: [R, econometrics, causal-inference, fixest, did, iv, rdd, event-study]
+---
+```
+
+And this is a snippet from the body — a decision tree that pins the agent to the modern DiD literature instead of the 2010-era TWFE default it would otherwise reach for:
+
+```text
+Is treatment timing the same across all treated units?
+├── YES (one shock, two groups)
+│   └── feols(y ~ treat_post | unit + time, cluster = ~unit)   # OK
+│
+└── NO (staggered adoption)
+    └── Otherwise (the realistic case):
+        ├── Callaway & Sant'Anna  (did::att_gt + aggte)
+        ├── Sun & Abraham         (fixest::sunab)
+        ├── Borusyak/Jaravel/Spiess (didimputation::did_imputation)
+        └── de Chaisemartin & D'Haultfoeuille (DIDmultiplegt)
+
+   Report at least two estimators when possible.
+```
+
 Each skill in this repo ships with:
 
-- `SKILL.md` — the routing layer the agent reads every time.
+- `SKILL.md` — the routing layer the agent reads every time (frontmatter + decision policy + decision trees).
 - `reference.md` — extended patterns, code recipes, and quality checks the agent loads when it needs depth.
 - `examples/` — runnable scripts (R, Python, Stata, Julia, LaTeX) that the agent adapts rather than copy-pastes verbatim.
 
