@@ -81,6 +81,32 @@ Each individual `SKILL.md` has a `## Decision Policy` section listing its specif
 
 **Why this matters for agentic use.** The skills are designed so that an unattended agent (e.g. running in CI, or in a Cursor background agent) can do real work without making research-substantive decisions on its own. When an answer is needed and no human is available, the policy is to be conservative (produce intermediate output, not final), write the unanswered question into the log, and surface it via PR or commit message for human review.
 
+### Recommended companion: `git-ai` for AI contribution tracking
+
+The decisions log gives you the agent's stated assumptions; **what it does not give you is line-level attribution of who actually wrote each line of code.** When you run these skills in agent mode (background agents, CI jobs, long autonomous sessions), I strongly recommend pairing them with [`git-ai`](https://github.com/git-ai-project/git-ai) — an open-source git extension that tracks AI-generated code automatically.
+
+It complements this repo well:
+
+- **The policy doc is upstream control** — what the agent should ask, default, document, or just do.
+- **`git-ai` is downstream observability** — what the agent actually wrote, with which agent, which model, and which prompt produced each line.
+
+What you get:
+
+- **Per-commit AI vs. human breakdown** — printed automatically on every `git commit` (e.g. "you 6% / mixed 2% / ai 92%").
+- **`git-ai blame`** — drop-in replacement for `git blame` that shows the model, agent, and session behind every line; especially useful for an empirical paper where reviewers may ask "did you write this regression spec or did the agent?".
+- **`git-ai stats`** — JSON output with AI-accept rates, human-override counts, and tool/model breakdowns. Easy to drop into a referee response.
+- **`/ask` skill** — talk to the agent that wrote a line about its instructions and the transcript that produced it. Helps a co-author or future-you reconstruct *why* a particular bit of analysis code looks the way it does.
+- **Local-first, no login required** — works offline. AI-attribution is stored in git notes; transcripts are stored in local SQLite (or optionally in a self-hosted store for teams).
+- Works with Claude Code, Cursor, Codex, Copilot, Windsurf, Gemini, OpenCode, and others — the same tools these skills target.
+
+Install (Mac / Linux / WSL):
+
+```bash
+curl -sSL https://usegitai.com/install.sh | bash
+```
+
+No per-repo setup; commit and prompt as normal. I use it whenever I run any of these skills in autonomous agent mode — research code that nobody can attribute later is research code nobody trusts later.
+
 ## Install on a new machine
 
 The skills work with any agent that supports the SKILL.md standard. The installer copies a skill into the agent's skills directory.
