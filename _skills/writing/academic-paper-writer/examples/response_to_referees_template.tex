@@ -1,0 +1,81 @@
+% =============================================================
+% response_to_referees_template.tex
+% One file per referee plus one for the editor. Quote the
+% referee in italics, respond directly underneath, point to the
+% specific change in the manuscript.
+% =============================================================
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, hyperref}
+\usepackage[capitalize, noabbrev]{cleveref}
+\title{Response to Referee 2 \\
+       \large Manuscript: ``[PAPER TITLE]''}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\noindent We thank Referee~2 for thoughtful comments that have improved
+the paper. Below we respond to each point in turn. Page and section
+numbers refer to the revised manuscript; new material is highlighted
+in \textcolor{blue}{blue} for ease of reading.
+
+\section*{Major Comments}
+
+\subsection*{Comment 1: Identification under staggered timing}
+
+\textit{``With treatment timing varying across units, the standard
+two-way fixed effects estimator may be biased
+(Goodman-Bacon, 2021). The authors should report a heterogeneity-robust
+estimator and discuss whether their conclusions hold.''}
+
+\medskip
+\noindent We agree, and we now report Callaway-Sant'Anna (2021) as our
+preferred estimator (\Cref{tab:main}, column~(3)). Two-way fixed effects
+is reported as a benchmark in column~(1). The two estimators agree to
+within [X]\%, and Sun-Abraham (2021) yields a similar magnitude. We have
+added a paragraph to \Cref{sec:strategy} discussing the choice and a new
+\Cref{tab:did_estimators} comparing TWFE, Callaway-Sant'Anna,
+Sun-Abraham, and Borusyak-Jaravel-Spiess.
+
+\subsection*{Comment 2: Inference with few clusters}
+
+\textit{``With only [G] treated clusters, conventional cluster-robust
+standard errors are likely to under-cover. The authors should report
+wild cluster bootstrap p-values.''}
+
+\medskip
+\noindent We have added wild cluster bootstrap p-values, computed using
+\texttt{boottest} (\Cref{tab:wild_boot}). Bootstrap p-values agree with
+conventional inference for the headline coefficient, although they are
+moderately wider for the heterogeneity estimates in \Cref{tab:hetero}.
+
+\section*{Minor Comments}
+
+\subsection*{Comment 3: [SHORT TITLE]}
+
+\textit{``[QUOTE]''}
+
+\medskip
+\noindent [BRIEF RESPONSE.] See \Cref{sec:X}.
+
+\subsection*{Comment 4: [SHORT TITLE]}
+
+\textit{``[QUOTE]''}
+
+\medskip
+\noindent [RESPONSE.]
+
+% --- Politely decline pattern (use sparingly) ----------------
+\subsection*{Comment 5: [SHORT TITLE]}
+
+\textit{``[QUOTE]''}
+
+\medskip
+\noindent We considered this carefully but respectfully maintain the
+original choice. Our reasoning is the following: [REASON 1]; [REASON 2];
+[REASON 3]. We have added a footnote acknowledging the alternative
+([\Cref{fn:alternative}]) so readers can judge for themselves.
+
+\end{document}

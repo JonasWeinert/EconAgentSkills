@@ -1,0 +1,36 @@
+% =============================================================
+% preamble-beamer.tex
+% Packages, theme, fonts, colors. Imported by slides.tex.
+% =============================================================
+
+\usepackage{amsmath, amssymb, amsthm, mathtools, dsfont, bm}
+\usepackage{booktabs, threeparttable, siunitx}
+\usepackage{graphicx, tikz}
+\usepackage[capitalize, noabbrev]{cleveref}
+
+% --- Theme ----------------------------------------------------
+\usetheme{metropolis}
+\metroset{
+  block       = fill,
+  background  = light,
+  numbering   = fraction,
+  progressbar = frametitle,
+  sectionpage = progressbar
+}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamercovered{transparent=20}
+
+% --- Custom palette (matches Okabe-Ito blue used in figures) -
+\definecolor{paperblue}{HTML}{0072B2}
+\definecolor{paperaccent}{HTML}{D55E00}
+\setbeamercolor{frametitle}{bg=paperblue, fg=white}
+\setbeamercolor{title}{fg=paperblue}
+\setbeamercolor{structure}{fg=paperblue}
+\setbeamercolor{alerted text}{fg=paperaccent}
+
+% --- Theorem environments (lighter than the paper's) ---------
+\theoremstyle{definition}
+\newtheorem{slidedef}{Definition}
+\newtheorem{slideprop}{Proposition}

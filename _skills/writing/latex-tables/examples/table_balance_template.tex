@@ -1,0 +1,34 @@
+% =============================================================
+% table_balance_template.tex
+%
+% DIME-style balance table layout (Treatment vs Control means,
+% difference, t-test). The actual numbers should come from
+% iebaltab in Stata or from the python-panel-data balance_table()
+% helper.
+% =============================================================
+
+\begin{table}[htbp]\centering
+\caption{Baseline balance}
+\label{tab:balance}
+\begin{threeparttable}
+\begin{tabular}{lccccc}
+\toprule
+                        & \multicolumn{2}{c}{Control} & \multicolumn{2}{c}{Treatment} & \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+                        & Mean & SD & Mean & SD & Diff. \\
+\midrule
+Age (years)             & 38.4 & 12.1 & 38.6 & 12.0 &  0.2     \\
+Female                  & 0.51 & 0.50 & 0.50 & 0.50 & -0.01    \\
+Years of schooling      & 10.8 & 3.2  & 10.9 & 3.1  &  0.1     \\
+Baseline outcome        & 0.02 & 1.01 & 0.03 & 0.99 &  0.01    \\
+\midrule
+Observations            & 5{,}021 & & 5{,}019 & & \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Differences are treatment minus control. None of the differences
+      are statistically significant at the 10\% level.
+\item Sample: baseline survey, full estimation sample.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

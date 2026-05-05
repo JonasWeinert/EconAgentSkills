@@ -1,0 +1,6 @@
+source,series_id,description,units,frequency,transformation,vintage,access_date,coverage_start,coverage_end,n_obs,license,citation
+FRED,GDPC1,Real GDP,Billions of Chained 2017 Dollars,quarterly,none,2026-05-05,2026-05-05T14:32:11Z,1947-01-01,2026-03-31,318,Public domain (US Government),"U.S. Federal Reserve Economic Data (FRED), series GDPC1, retrieved 2026-05-05."
+FRED,UNRATE,Unemployment Rate,Percent,monthly,none,2026-05-05,2026-05-05T14:32:11Z,1948-01-01,2026-04-01,940,Public domain (US Government),"U.S. Federal Reserve Economic Data (FRED), series UNRATE, retrieved 2026-05-05."
+FRED,FEDFUNDS,Federal Funds Effective Rate,Percent,monthly,none,2026-05-05,2026-05-05T14:32:11Z,1954-07-01,2026-04-01,861,Public domain (US Government),"U.S. Federal Reserve Economic Data (FRED), series FEDFUNDS, retrieved 2026-05-05."
+World Bank Indicators,NY.GDP.PCAP.CD,gdp_per_capita_usd,Current US$,annual,none,2026-05-05,2026-05-05T14:32:55Z,1960,2024,650,CC BY 4.0,"World Bank, World Development Indicators, NY.GDP.PCAP.CD, retrieved 2026-05-05."
+World Bank Indicators,SP.POP.TOTL,population,People,annual,none,2026-05-05,2026-05-05T14:32:55Z,1960,2024,650,CC BY 4.0,"World Bank, World Development Indicators, SP.POP.TOTL, retrieved 2026-05-05."

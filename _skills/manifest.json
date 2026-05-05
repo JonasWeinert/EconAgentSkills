@@ -1,0 +1,292 @@
+{
+  "description": "Opinionated agent skills for economics research workflows: data, analysis, writing, communication.",
+  "generated_at": "2026-05-05T16:31:24+00:00",
+  "name": "EconAgentSkills",
+  "skill_count": 10,
+  "skills": [
+    {
+      "author": "JonasWeinert",
+      "compatibility": [
+        "claude-code",
+        "cursor",
+        "codex",
+        "gemini-cli"
+      ],
+      "description": "Generates rigorous panel and causal-inference code in Python using `pyfixest` (modern fixest port), `linearmodels.PanelOLS`, `statsmodels`, and pandas, with proper fixed effects, clustering, weak-IV diagnostics, event studies, and DIME-aligned reproducibility. Honest about Python's smaller modern-DiD ecosystem and routes the user to R when needed. Use when the user asks for PanelOLS, pyfixest, fixed effects, two-way clustering, IV2SLS, panel DiD, event studies, weak instruments, BJS imputation, or publication-ready Python regression output.",
+      "name": "python-panel-data",
+      "path": "_skills/analysis/python-panel-data",
+      "support_files": [
+        "examples",
+        "reference.md"
+      ],
+      "tags": [
+        "python",
+        "pyfixest",
+        "linearmodels",
+        "panel-data",
+        "did",
+        "iv",
+        "econometrics"
+      ],
+      "version": "2.0.0",
+      "workflow_stage": "analysis"
+    },
+    {
+      "author": "JonasWeinert",
+      "compatibility": [
+        "claude-code",
+        "cursor",
+        "codex",
+        "gemini-cli"
+      ],
+      "description": "Generates rigorous, modern, reproducible R code for causal inference and panel econometrics with `fixest`, heterogeneity-robust DiD estimators (Callaway-Sant'Anna, Sun-Abraham, BJS, de Chaisemartin-D'Haultfoeuille), weak-IV-robust inference, optimal-bandwidth RDD via `rdrobust`, and wild cluster bootstrap. Use when the user asks for IV, DiD, event studies, RDD, TWFE, staggered treatment, clustered or wild-bootstrap inference, instrumental variables, parallel trends, first-stage F, AR confidence sets, or publication-ready R regression output.",
+      "name": "r-econometrics",
+      "path": "_skills/analysis/r-econometrics",
+      "support_files": [
+        "examples",
+        "reference.md"
+      ],
+      "tags": [
+        "R",
+        "econometrics",
+        "causal-inference",
+        "fixest",
+        "did",
+        "iv",
+        "rdd",
+        "event-study"
+      ],
+      "version": "2.0.0",
+      "workflow_stage": "analysis"
+    },
+    {
+      "author": "JonasWeinert",
+      "compatibility": [
+        "claude-code",
+        "cursor",
+        "codex",
+        "gemini-cli"
+      ],
+      "description": "Generates rigorous, reproducible Stata regression workflows that follow World Bank DIME Analytics conventions (`ietoolkit`, `iefolder`, master do-files, `ieboilstart`, dynamic absolute paths, `iebaltab`, `ieddtab`, `esttab`). Defaults to modern estimators (`reghdfe`, `ivreg2`/`ivreghdfe`, `csdid`, `eventstudyinteract`, `did_imputation`, `boottest`, `rdrobust`) with weak-IV-robust inference and wild cluster bootstrap when needed. Use when the user asks for OLS, logit, fixed effects, panel regression, DiD, IV, RDD, event study, balance tables, esttab/outreg2, reghdfe, csdid, ivreg2, boottest, ietoolkit, iefolder, master do-file, or publication-ready Stata output.",
+      "name": "stata-regression",
+      "path": "_skills/analysis/stata-regression",
+      "support_files": [
+        "examples",
+        "reference.md"
+      ],
+      "tags": [
+        "stata",
+        "regression",
+        "dime",
+        "ietoolkit",
+        "reghdfe",
+        "csdid",
+        "did",
+        "iv",
+        "rdd",
+        "econometrics"
+      ],
+      "version": "2.0.0",
+      "workflow_stage": "analysis"
+    },
+    {
+      "author": "JonasWeinert",
+      "compatibility": [
+        "claude-code",
+        "cursor",
+        "codex",
+        "gemini-cli"
+      ],
+      "description": "Builds academic economics presentations in LaTeX Beamer that share the same `notation.tex` macros and `tabs/`/`figs/` outputs as the underlying paper, so a single rebuild keeps slides and paper in sync. Defaults to clean themes (`metropolis` / `default` with custom colors), 16:9 aspect ratio, time-budget-aware structure (15/20/45/60/90 min), incremental reveals, and DIME-aligned reproducibility (figures/tables produced by code, never screenshotted). Cross-links to `latex-econ-model`, `latex-tables`, `econ-visualization`, and `academic-paper-writer`. Use when the user asks for conference talk slides, seminar presentations, job-market talks, thesis defense slides, or wants to convert a paper into Beamer.",
+      "name": "beamer-presentation",
+      "path": "_skills/communication/beamer-presentation",
+      "support_files": [
+        "examples",
+        "reference.md"
+      ],
+      "tags": [
+        "LaTeX",
+        "Beamer",
+        "presentations",
+        "slides",
+        "reproducibility",
+        "dime"
+      ],
+      "version": "2.0.0",
+      "workflow_stage": "communication"
+    },
+    {
+      "author": "JonasWeinert",
+      "compatibility": [
+        "claude-code",
+        "cursor",
+        "codex",
+        "gemini-cli"
+      ],
+      "description": "Generates publication-quality economics figures produced by code (R `ggplot2`, Python `matplotlib`/`seaborn`, Stata `twoway`/`coefplot`) and exported in vector format directly to the paper's `figs/` folder. Defaults to DIME's \"full replicability\" tier and the [Reviewing Graphs checklist](https://dimewiki.worldbank.org/Checklist:_Reviewing_Graphs) \u2014 clear titles for standalone use, intuitive colors, colorblind-safe palettes, consistent axis labels, source citations on standalone visuals, and visualization choices grounded in the [Data Visualization](https://dimewiki.worldbank.org/Data_visualization) wiki page. Use when the user asks for event-study coefficient plots, balance plots, time series with recession shading, choropleth maps, binscatters, density plots, scatter-with-fit, regression coefficient plots, or any reproducible figure for a paper, slide deck, or dashboard.",
+      "name": "econ-visualization",
+      "path": "_skills/communication/econ-visualization",
+      "support_files": [
+        "examples",
+        "reference.md"
+      ],
+      "tags": [
+        "visualization",
+        "ggplot2",
+        "matplotlib",
+        "seaborn",
+        "stata-twoway",
+        "coefplot",
+        "event-study",
+        "publication",
+        "dime",
+        "reproducibility"
+      ],
+      "version": "2.0.0",
+      "workflow_stage": "communication"
+    },
+    {
+      "author": "JonasWeinert",
+      "compatibility": [
+        "claude-code",
+        "cursor",
+        "codex",
+        "gemini-cli"
+      ],
+      "description": "Generates rigorous, reproducible Python data-acquisition pipelines for economic APIs (FRED, World Bank, BLS, OECD SDMX, IMF, Eurostat, Yahoo Finance). Applies DIME Analytics conceptual conventions to Python: DataWork-style folders with immutable Raw/, master orchestration script with dynamic absolute paths via `pathlib`, secrets-as-env-vars (PII discipline applied to API keys), source codebooks recording series IDs / units / vintage / access date, deterministic caching, and asserted output schemas. Use when the user asks to download economic indicators, build cross-country panels, automate data refreshes, combine multiple API sources, set up a reproducible data pipeline, or document data provenance.",
+      "name": "api-data-fetcher",
+      "path": "_skills/data/api-data-fetcher",
+      "support_files": [
+        "examples",
+        "reference.md"
+      ],
+      "tags": [
+        "python",
+        "api",
+        "fred",
+        "world-bank",
+        "oecd",
+        "imf",
+        "bls",
+        "eurostat",
+        "data-pipeline",
+        "reproducibility",
+        "dime"
+      ],
+      "version": "2.0.0",
+      "workflow_stage": "data"
+    },
+    {
+      "author": "JonasWeinert",
+      "compatibility": [
+        "claude-code",
+        "cursor",
+        "codex",
+        "gemini-cli"
+      ],
+      "description": "Generates rigorous, reproducible Stata data-cleaning workflows that follow World Bank DIME Analytics conventions (`iefieldkit`, `ietoolkit`, `iefolder` DataWork structure, `ieboilstart`, `iecodebook`, `ieduplicates`, `iecompdup`, extended missing values, master datasets, encryption for PII, dynamic absolute paths). Defaults to codebook-driven cleaning, `assert`/`isid` validation, labeled categorical variables, and reproducible from-clean-session execution. Use when the user asks to clean survey or administrative data in Stata, build an analysis-ready panel, handle duplicates, harmonize datasets across rounds, write a master dataset, de-identify data, label variables, or produce a codebook.",
+      "name": "stata-data-cleaning",
+      "path": "_skills/data/stata-data-cleaning",
+      "support_files": [
+        "examples",
+        "reference.md"
+      ],
+      "tags": [
+        "stata",
+        "data-cleaning",
+        "dime",
+        "ietoolkit",
+        "iefieldkit",
+        "iecodebook",
+        "reproducibility"
+      ],
+      "version": "2.0.0",
+      "workflow_stage": "data"
+    },
+    {
+      "author": "JonasWeinert",
+      "compatibility": [
+        "claude-code",
+        "cursor",
+        "codex",
+        "gemini-cli"
+      ],
+      "description": "Foundational data-discipline skill for econometrics work in any language. Enforces the discipline that every other data, analysis, and writing skill depends on: define the unit of analysis before anything else; treat IDs as a contract; merge with explicit cardinality and validation; never silently change the unit of observation; protect PII; document every drop; keep raw immutable; build a master dataset per unit of observation. Cross-language patterns for Stata, R, and Python; aligned with DIME Analytics' [Data Cleaning](https://dimewiki.worldbank.org/Data_Cleaning), [ID Variable Properties](https://dimewiki.worldbank.org/ID_Variable_Properties), and [DataWork Folder](https://dimewiki.worldbank.org/DataWork_Folder) guidance. Use when the user asks to combine datasets, build a panel, validate data structure, set up a project's data folder, handle PII / de-identification, define or change the unit of analysis, debug a merge, or whenever multiple data skills are about to interact (e.g. before running an analysis on a freshly-cleaned dataset).",
+      "name": "working-with-data",
+      "path": "_skills/data/working-with-data",
+      "support_files": [
+        "examples",
+        "reference.md"
+      ],
+      "tags": [
+        "data",
+        "data-discipline",
+        "unit-of-analysis",
+        "merging",
+        "master-dataset",
+        "pii",
+        "dime",
+        "reproducibility",
+        "foundational"
+      ],
+      "version": "1.0.0",
+      "workflow_stage": "data"
+    },
+    {
+      "author": "JonasWeinert",
+      "compatibility": [
+        "claude-code",
+        "cursor",
+        "codex",
+        "gemini-cli"
+      ],
+      "description": "Drafts and revises empirical and theoretical economics papers in journal-style structure (introduction, literature, data, identification, results, robustness, discussion, conclusion), with explicit identification arguments, careful causal language, and reviewer-response discipline. Cross-links to `latex-econ-model` for theory typesetting, `latex-tables` for `esttab`/`modelsummary`/`pyfixest.etable` table production, and `econ-visualization` for code-driven figures, so every numeric claim, table, and figure in the paper is reproducible from one project repo. Use when the user asks to draft an introduction, write a methods or identification section, interpret results, polish a discussion, prepare a journal submission, write a referee response letter, or restructure an existing paper.",
+      "name": "academic-paper-writer",
+      "path": "_skills/writing/academic-paper-writer",
+      "support_files": [
+        "examples",
+        "reference.md"
+      ],
+      "tags": [
+        "LaTeX",
+        "academic-writing",
+        "papers",
+        "economics",
+        "identification",
+        "referee-response",
+        "dime"
+      ],
+      "version": "2.0.0",
+      "workflow_stage": "writing"
+    },
+    {
+      "author": "JonasWeinert",
+      "compatibility": [
+        "claude-code",
+        "cursor",
+        "codex",
+        "gemini-cli"
+      ],
+      "description": "Generates publication-ready LaTeX tables produced by code (Stata `esttab`/`outreg2`, R `modelsummary`/`fixest::etable`, Python `stargazer`/`pyfixest.etable`) and writes them directly to the paper's `tabs/` folder. Defaults to DIME's \"full replicability\" standard (no copy-paste from any console), `booktabs` styling, three-line tables, threeparttable notes, sensible significance stars, and `\\Cref{}`-friendly labels. Aligned with DIME Analytics' [Exporting Analysis](https://dimewiki.worldbank.org/Exporting_Analysis) and [Submit Table checklist](https://dimewiki.worldbank.org/Checklist:_Submit_Table). Use when the user asks for regression tables, summary statistics, balance tables, descriptive statistics, mean-comparison tables, multi-spec tables, or any code-to-LaTeX-table workflow.",
+      "name": "latex-tables",
+      "path": "_skills/writing/latex-tables",
+      "support_files": [
+        "examples",
+        "reference.md"
+      ],
+      "tags": [
+        "latex",
+        "tables",
+        "regression",
+        "booktabs",
+        "esttab",
+        "modelsummary",
+        "stargazer",
+        "dime",
+        "reproducibility"
+      ],
+      "version": "2.0.0",
+      "workflow_stage": "writing"
+    }
+  ]
+}

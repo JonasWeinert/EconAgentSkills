@@ -1,0 +1,67 @@
+% =============================================================
+% identification_template.tex
+% Empirical strategy section. Lead with the identifying argument,
+% then the equation, then the supporting evidence.
+% =============================================================
+
+\section{Empirical Strategy}\label{sec:strategy}
+
+\subsection{Identification}\label{sec:identification}
+
+Our research design exploits [SOURCE OF VARIATION: e.g.\ the staggered
+rollout of program X across U.S.\ states between 2010 and 2018]. The
+identifying assumption is that, absent the program, [TREATED UNITS]
+would have followed the same trend in [OUTCOME] as [CONTROL UNITS].
+
+We provide three pieces of evidence in support of this assumption.
+
+\paragraph{Pre-trends.} We estimate the event-study specification
+%
+\begin{equation}\label{eq:event_study}
+y_{it} = \sum_{e \neq -1} \beta_e \, \ind\{t - g_i = e\}
+       + \alpha_i + \gamma_t + \varepsilon_{it},
+\end{equation}
+%
+where $g_i$ is unit $i$'s first treatment date (with $g_i = \infty$
+for never-treated units) and $\beta_e$ traces out the dynamic effect
+at event time $e$. \Cref{fig:event} reports estimates from the
+heterogeneity-robust Sun-Abraham (2021) implementation. Pre-period
+leads are jointly indistinguishable from zero ($p = [P]$), supporting
+the parallel-trends assumption.
+
+\paragraph{Placebo.} Applying the same design to [PLACEBO OUTCOME],
+which the program should not affect, yields a point estimate of
+[POINT] (s.e.\ [SE]) -- a precise null (\Cref{tab:placebo}).
+
+\paragraph{Balance.} \Cref{tab:balance} reports standardized
+differences in pre-treatment characteristics across treatment cohorts.
+All differences are within $\pm 0.10$, the conventional
+\citet{ImbensRubin2015} threshold for ``well-balanced''.
+
+\subsection{Estimating Equation}
+
+Our preferred specification is
+%
+\begin{equation}\label{eq:main}
+y_{it} = \beta \cdot D_{it} + X_{it}^{\prime} \gamma + \alpha_i + \gamma_t
+       + \varepsilon_{it},
+\end{equation}
+%
+where $D_{it}$ is an indicator for unit $i$ being treated in period $t$,
+$X_{it}$ is a vector of time-varying controls, and $\alpha_i$, $\gamma_t$
+are unit and time fixed effects. Standard errors are clustered at the
+[CLUSTER LEVEL], the level at which treatment is assigned. With
+[N CLUSTERS] clusters we also report wild cluster bootstrap p-values
+(\citealp{CameronGelbachMiller2008}; \citealp{MacKinnonWebb2018}).
+
+Because treatment timing is staggered, we estimate \cref{eq:main} using
+the [Callaway-Sant'Anna (2021) / Sun-Abraham (2021) / Borusyak-Jaravel-Spiess
+(2024)] heterogeneity-robust estimator and report the conventional TWFE
+estimate as a benchmark in \Cref{tab:did_estimators}.
+
+\subsection{Threats to Identification}
+
+The remaining concern is [HONEST CONCERN: e.g.\ that policy adoption is
+correlated with pre-existing trends in [CHANNEL]]. We address this in
+three ways. First, [APPROACH 1]. Second, [APPROACH 2]. Third,
+[APPROACH 3]. Results are reported in \Cref{sec:robustness}.

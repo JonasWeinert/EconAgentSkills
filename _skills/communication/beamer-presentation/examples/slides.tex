@@ -1,0 +1,40 @@
+% =============================================================
+% slides.tex
+% Master deck. Imports the same notation.tex as the paper, then
+% \input{}s individual frame files. Build with `latexmk -pdf`.
+% =============================================================
+
+\documentclass[aspectratio=169, 11pt]{beamer}
+
+\input{preamble-beamer}
+\input{../../paper/tex/notation}    % <-- shared with paper
+
+% Headline numbers also live in tex/numbers.tex (rebuilt by code)
+% \input{../../paper/tex/numbers}
+
+\title{Title of the Paper}
+\subtitle{Short and Descriptive}
+\author{First Author \and Second Author}
+\institute{University \\ \texttt{first@uni.edu}}
+\date{Conference Name, Month Year}
+
+\begin{document}
+
+\begin{frame}[plain]\titlepage\end{frame}
+
+% --- Body ----------------------------------------------------
+\input{frame_motivation}
+\input{frame_strategy}
+\input{frame_results}
+\input{frame_robustness}
+\input{frame_conclusion}
+
+% --- Backup --------------------------------------------------
+\appendix
+\begin{frame}[plain]
+  \begin{center}\Huge\bfseries Backup slides\end{center}
+\end{frame}
+% \input{frame_backup_estimators}
+% \input{frame_backup_mechanism}
+
+\end{document}

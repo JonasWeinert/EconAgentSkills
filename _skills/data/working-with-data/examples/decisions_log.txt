@@ -1,0 +1,62 @@
+# DECISIONS LOG (review and edit before publication)
+# ============================================================
+# Project       : Effect of Program X on Firm Outcomes
+# Script        : code/r/build_panel.R
+# Inputs        : data/raw/baseline.csv, data/raw/endline.csv
+# Outputs       : data/processed/panel.parquet
+# Estimand      : ATT of program X on log revenue
+#
+# Unit of obs   : firm-year (asserted: stopifnot(!anyDuplicated(df[, c("firm_id","year")])))
+# ID            : firm_id (numeric, immutable across waves; verified via crosswalk
+#                  data/raw/crosswalks/firm_id_2018_to_2024.csv)
+# Panel         : unbalanced; 12,432 firms, 174,048 firm-years (2010-2024)
+#
+# Merges:
+#   - baseline x endline on firm_id   1:1, both-only kept   N = 12,432
+#   - + master  on firm_id            m:1, all matched      N = 174,048
+#   - + industry classification       m:1, all matched      N = 174,048
+#
+# Filters (cumulative):
+#   - raw                                           14,012 firms
+#   - drop missing(industry)                        13,801 firms
+#   - drop revenue <= 0                             12,711 firms
+#   - keep firms observed in both waves             12,432 firms
+#
+# Derived variables:
+#   - log_rev = log1p(revenue)
+#   - log_rev_w = winsorized log_rev at p1 / p99
+#   - rel_year = year - first_treat_year (NA for never-treated)
+#
+# Treatment:
+#   - treat = 1 from year of first program participation onward
+#   - first_treat_year = NA for never-treated (control)
+#   - 4,217 ever-treated firms; 8,215 never-treated
+#
+# Identification:
+#   - Callaway-Sant'Anna (2021), staggered adoption
+#   - Comparison group: never-treated
+#   - Cluster-robust SE at the firm level (G = 12,432)
+#
+# PII handling:
+#   - dropped at construction: firm_name, owner_name, contact_email,
+#                              contact_phone, headquarters_address, owner_dob
+#   - kept (de-identified):    firm_id, region (4 levels), industry (NAICS-2)
+#
+# Reproducibility:
+#   - lockfile  : renv.lock
+#   - seed      : 20240101
+#   - master    : code/r/run_all.R
+#
+# ASSUMPTIONS [HUMAN: please confirm]:
+#   - firm_id is stable across the 2018 reform; verified for sample but
+#     NOT guaranteed for firms that exited and re-entered.
+#   - "Industry" is fixed at baseline for each firm. Re-classifications
+#     in 2020 are ignored.
+#   - log1p (rather than log + 1) used to avoid -inf with the few
+#     zero-revenue firms that survived earlier filters.
+#
+# BLOCKED [HUMAN: please answer]:
+#   - Should we treat firms acquired during the period as right-censored
+#     or as continuing units under the acquirer? Currently treated as
+#     continuing (m:1 merge with the acquirer's firm_id from the crosswalk).
+# ============================================================

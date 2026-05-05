@@ -1,0 +1,54 @@
+% =============================================================
+% results_template.tex
+% Lead with the headline coefficient before walking through the
+% table. Use \input{tabs/...} for every table.
+% =============================================================
+
+\section{Results}\label{sec:results}
+
+\Cref{tab:main} presents our main results.
+
+Column~(1) reports a baseline two-way fixed-effects specification with
+no controls. The point estimate on [TREATMENT VARIABLE] is
+\headlineEstimate{} (\headlineSE{}), statistically significant at the
+[1/5] percent level.
+
+Column~(2) adds [CONTROL SET]. The estimate moves to [b] ([se]) --
+[stable / smaller / larger], suggesting that [INTERPRETATION].
+
+Column~(3) adds [FIXED EFFECTS / ALTERNATIVE SPEC] and yields [b]
+([se]). This is our preferred specification.
+
+\input{tabs/table_main.tex}
+
+To gauge economic significance, note that the headline effect of
+\headlineEstimate{} corresponds to a [X]\% increase relative to the
+sample mean of \headlineMean{} (\Cref{tab:summary}). Equivalently,
+[ALTERNATIVE BENCHMARK].
+
+\subsection{Heterogeneity}\label{sec:hetero}
+
+\Cref{tab:hetero} explores heterogeneity by [DIMENSION]. The effect
+is [LARGER / CONCENTRATED IN / DRIVEN BY] [SUBGROUP] (column~(2)),
+with no detectable effect for [OTHER SUBGROUP] (column~(3)). This
+pattern is consistent with [MECHANISM], which we examine more
+directly in \Cref{sec:mechanisms}.
+
+\input{tabs/table_hetero.tex}
+
+\subsection{Dynamics}
+
+\Cref{fig:event} reports the event-study coefficients from
+\cref{eq:event_study}. Pre-period coefficients are economically and
+statistically indistinguishable from zero, while post-period
+coefficients trace out [SHAPE: a sharp jump / gradual ramp / inverted U].
+The full dynamic ATT, aggregated across event time, is [b] ([se]).
+
+\begin{figure}[htbp]\centering
+  \includegraphics[width=0.85\textwidth]{figs/fig_event_study.pdf}
+  \caption{Event-study estimates of the effect of [TREATMENT] on
+  [OUTCOME]. Heterogeneity-robust Sun-Abraham (2021) estimator;
+  95\% confidence intervals from cluster-robust standard errors
+  clustered by [CLUSTER LEVEL].}
+  \label{fig:event}
+\end{figure}

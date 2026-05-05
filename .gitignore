@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+*.swp
+*~
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+.history/
+
+# Generated caches
+__pycache__/
+*.py[cod]
+
+# Environment files
+.env
+.env.local

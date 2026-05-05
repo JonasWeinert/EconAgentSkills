@@ -1,0 +1,36 @@
+% =============================================================
+% frame_strategy.tex - 2 slides on identification
+% =============================================================
+
+\begin{frame}{Identification}
+  \textbf{What's the variation?} [Source of variation.]
+
+  \medskip
+  \textbf{Identifying assumption.} Without [TREATMENT], treated
+  and control units share the same trend in [OUTCOME].
+
+  \medskip
+  \textbf{Three pieces of supporting evidence:}
+  \begin{enumerate}
+    \item Pre-period leads jointly indistinguishable from zero
+          ($p = [P]$).
+    \item Placebo on [PLACEBO OUTCOME] yields a precise null.
+    \item Pre-treatment characteristics balanced
+          ($|\text{std diff}| < 0.10$).
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Estimating equation}
+  \begin{equation*}
+    y_{it} = \beta \cdot D_{it} + X_{it}^{\prime}\gamma
+           + \alpha_i + \gamma_t + \varepsilon_{it}.
+  \end{equation*}
+
+  \begin{itemize}
+    \item $D_{it}$: treatment indicator.
+    \item $\alpha_i, \gamma_t$: unit and time fixed effects.
+    \item Cluster SEs at the [LEVEL] level.
+    \item Staggered timing: report Callaway-Sant'Anna as
+          preferred, TWFE as benchmark.
+  \end{itemize}
+\end{frame}

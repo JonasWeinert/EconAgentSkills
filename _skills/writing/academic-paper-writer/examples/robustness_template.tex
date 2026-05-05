@@ -1,0 +1,47 @@
+% =============================================================
+% robustness_template.tex
+% Standard ladder for empirical-applied papers.
+% =============================================================
+
+\section{Robustness}\label{sec:robustness}
+
+We probe the robustness of our main result along five dimensions:
+inference, alternative samples, alternative controls, alternative
+estimators, and placebo tests. \Cref{tab:robust} reports the first
+four dimensions; the placebo tests are in \Cref{tab:placebo}.
+
+\input{tabs/table_robust.tex}
+
+\paragraph{Inference.} Column~(2) clusters two-way (unit and year)
+instead of one-way; standard errors are [SIMILAR / LARGER]. Column~(3)
+reports wild cluster bootstrap p-values from
+\citet{CameronGelbachMiller2008} via \texttt{boottest}, which agree
+with conventional inference.
+
+\paragraph{Alternative sample.} Column~(4) restricts to
+[SUBSAMPLE: e.g.\ rural counties / pre-2015 period / non-pilot states]
+to address [CONCERN]. The point estimate is [SIMILAR].
+
+\paragraph{Alternative controls.} Column~(5) augments the baseline
+with [CONTROL SET]. Adding controls changes the point estimate by
+less than [X]\%, suggesting that selection on observables is not
+driving the result.
+
+\paragraph{Alternative estimators.} \Cref{tab:did_estimators} reports
+the main effect estimated using TWFE, Callaway-Sant'Anna (2021),
+Sun-Abraham (2021), and Borusyak-Jaravel-Spiess (2024). The four
+estimators agree to within [X]\%, suggesting that effect heterogeneity
+across cohorts is not driving our conclusion.
+
+\input{tabs/table_did_estimators.tex}
+
+\paragraph{Placebo.} \Cref{tab:placebo} reports the same specification
+applied to [PLACEBO OUTCOME], which the program should not affect.
+The estimated effect is [POINT ESTIMATE] (s.e.\ [SE]) -- a precise
+null.
+
+\input{tabs/table_placebo.tex}
+
+\paragraph{Pre-trends.} \Cref{fig:event} confirms that pre-period
+coefficients in the event-study specification are jointly
+indistinguishable from zero ($p = [P]$).
